@@ -1,0 +1,36 @@
+#include <iostream>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+
+int main() {
+    int size;
+    std::cout << "Enter array size: ";
+    std::cin >> size;
+
+    if (size <= 0) {
+        std::cout << "Array size must be positive.\n";
+        return 1;
+    }
+
+    int* dynamicArray = new int[size];
+
+    std::srand(std::time(nullptr));
+    std::cout << "Generated array:\n";
+    for (int i = 0; i < size; ++i) {
+        dynamicArray[i] = std::rand() % 100;
+        std::cout << dynamicArray[i] << " ";
+    }
+    std::cout << "\n";
+
+    std::sort(dynamicArray, dynamicArray + size);
+
+    std::cout << "Sorted array:\n";
+    for (int i = 0; i < size; ++i) {
+        std::cout << dynamicArray[i] << " ";
+    }
+    std::cout << "\n";
+
+    delete[] dynamicArray;
+    return 0;
+}
